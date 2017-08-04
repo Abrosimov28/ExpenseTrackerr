@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expenses</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(expenses)}">
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>List of expenses</h2>
+
+            </div>
+            <div class="col-sm-6">
+
+                <form class="form-horizontal" th:action="@{/expensesByChosenDate}" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">From:</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" th:name="dateFrom"
+                                   value="2017-01-01" th:required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">To:</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" th:name="dateTo"
+                                   value="2017-12-01" th:required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Category:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" th:name="type">
+                                <option value="all" th:text="--------"></option>
+                                <option value="Food" th:text="Food">Food</option>
+                                <option value="Clothes" th:text="Clothes">Clothes</option>
+                                <option value="House" th:text="House">House</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sort</button>
+                </form>
+
+            </div>
+            <!--<div class="col-sm-3">-->
+            <!--<p>Sort by category:</p>-->
+            <!--<form class="form-horizontal" th:action="@{/expensesByCurrentMonth}" method="get">-->
+            <!--<div class="form-group">-->
+
+            <!--<select class="form-control" th:name="type">-->
+            <!--<option value="Food" th:text="Food">Food</option>-->
+            <!--<option value="Clothes" th:text="Clothes">Clothes</option>-->
+            <!--<option value="House" th:text="House">House</option>-->
+            <!--</select>-->
+            <!--<button type="submit" class="btn btn-primary">Sort by</button>-->
+            <!--</div>-->
+            <!--</form>-->
+            <!--</div>-->
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="expense : ${expenses}">
+                <td th:text="${expense.date}">Date</td>
+                <td th:text="${expense.cost}">Amount</td>
+                <td th:text="${expense.type}">Type</td>
+                <td><a th:href="${ '/expense/' + expense.id}">View</a></td>
+                <td><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
+                <td><a th:href="${'/expense/delete/' + expense.id}">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Total amount:</td>
+                <td th:text="${totalCost}"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
