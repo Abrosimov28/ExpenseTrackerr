@@ -39,6 +39,7 @@
                                 <option value="Food" th:text="Food">Food</option>
                                 <option value="Clothes" th:text="Clothes">Clothes</option>
                                 <option value="House" th:text="House">House</option>
+                                <option value="Holiday" th:text="Holiday">Holiday</option>
                             </select>
                         </div>
                     </div>
@@ -66,6 +67,7 @@
             <tr>
                 <th>Date</th>
                 <th>Amount</th>
+                <th>Description</th>
                 <th>Category</th>
                 <th>View</th>
                 <th>Edit</th>
@@ -74,6 +76,7 @@
             <tr th:each="expense : ${expenses}">
                 <td th:text="${expense.date}">Date</td>
                 <td th:text="${expense.cost}">Amount</td>
+                <td th:text="${expense.description}"> </td>
                 <td th:text="${expense.type}">Type</td>
                 <td><a th:href="${ '/expense/' + expense.id}">View</a></td>
                 <td><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
