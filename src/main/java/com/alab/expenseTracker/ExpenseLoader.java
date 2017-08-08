@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 // AUTO LOADNE UDAJE DO DATABASY NA TESTING
@@ -81,6 +82,7 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         User user1 = new User();
         user1.setUsername("user");
         user1.setPassword("user");
+        user1.setDateCreated(new Date());
         userService.saveOrUpdate(user1);
 
         User user2 = new User();

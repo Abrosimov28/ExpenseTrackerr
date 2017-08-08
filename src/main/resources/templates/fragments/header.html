@@ -9,9 +9,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
                 <ul class="nav navbar-nav">
-                    <li><a href="#" th:href="@{/expenses}" >Expenses</a></li>
+                    <li><a href="#" th:href="@{/expenses}" sec:authorize="hasAuthority('ADMIN')">Expenses</a></li>
                     <li><a href="#" th:href="@{/expense/new}" sec:authorize="hasAuthority('ADMIN')">New Expense</a></li>
-                    <li><a href="#" th:href="@{/login}">Sign In</a></li>
+                    <!--<li><a href="#" th:href="@{/login}">Sign In</a></li>-->
                 </ul>
             </div>
         </nav>
