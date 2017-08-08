@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en" th:fragment="head">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -7,6 +7,10 @@
           rel="stylesheet" media="screen" />
 
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="../../css/styles.css" th:href="@{/css/styles.css?v=1.0.0}" />
+
+    <script th:src="@{/js/main.js}"></script>
 
 </head>
 <body>

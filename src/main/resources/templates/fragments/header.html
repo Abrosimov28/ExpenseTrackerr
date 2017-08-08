@@ -13,13 +13,14 @@
                     <!--<li><a href="#" th:href="@{/login}">Sign In</a></li>-->
                 </ul>
             </div>
+            <div class="welcome">
+                <span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="name"></span></span>
+                <form th:action="@{/logout}" method="post">
+                    <span sec:authorize="isAuthenticated()"><input type="submit" value="Sign Out" /></span>
+                </form>
+            </div>
         </nav>
-        <div class="welcome">
-            <span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="name"></span></span>
-            <form th:action="@{/logout}" method="post">
-                <span sec:authorize="isAuthenticated()"><input type="submit" value="Sign Out" /></span>
-            </form>
-        </div>
+
     </div>
 </div>
 
