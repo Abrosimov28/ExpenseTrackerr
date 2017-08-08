@@ -3,50 +3,49 @@ package com.alab.expenseTracker.security.service;
 import com.alab.expenseTracker.security.entities.User;
 import com.alab.expenseTracker.security.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("springdatajpa")
 public class UserServiceImpl implements UserService {
 
-   private UserRepository userRepository;
+    private UserRepository userRepository;
 
-   @Autowired
+    @Autowired
     public void setUserRepository(UserRepository userRepository) {
-       this.userRepository = userRepository;
-   }
+        this.userRepository = userRepository;
+    }
 
-   private EncryptionService encryptionService;
+    private EncryptionService encryptionService;
 
-   @Autowired
+    @Autowired
     public void setEncryptionService(EncryptionService encryptionService) {
-       this.encryptionService = encryptionService;
-   }
+        this.encryptionService = encryptionService;
+    }
 
-   @Override
+
+    @Override
     public List<?> listAll() {
-       List<User> users = new ArrayList<>();
-       userRepository.findAll().forEach(users::add);
-       return users;
-   }
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add); //fun with Java 8
+        return users;
+    }
 
-   @Override
+    @Override
     public User getById(Integer id) {
-       return userRepository.findOne(id);
-   }
+        return userRepository.findOne(id);
+    }
 
-   @Override
-   public User saveOrUpdate(User entityObject) {
-       if(entityObject.getPassword() != null){
-           entityObject.setEncryptedPassword(encryptionService.encryptString(entityObject.getPassword()));
-       }
-       return userRepository.save(entityObject);
-   }
+    @Override
+    public User saveOrUpdate(User domainObject) {
+        if(domainObject.getPassword() != null){
+            domainObject.setEncryptedPassword(encryptionService.encryptString(domainObject.getPassword()));
+        }
+        return userRepository.save(domainObject);
+    }
     @Override
     @Transactional
     public void delete(Integer id) {
@@ -57,5 +56,4 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    
 }

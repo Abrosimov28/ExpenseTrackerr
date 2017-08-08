@@ -3,14 +3,12 @@ package com.alab.expenseTracker.security.service;
 import com.alab.expenseTracker.security.entities.Role;
 import com.alab.expenseTracker.security.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("springdatajpa")
 public class RoleServiceImpl implements RoleService {
 
     private RoleRepository roleRepository;

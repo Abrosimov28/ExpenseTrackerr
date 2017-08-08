@@ -69,18 +69,18 @@
                 <th>Amount</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
-                <th sec:authorize="hasAnyRole('ROLE_ADMIN')">Edit</th>
-                <th sec:authorize="hasAnyRole('ROLE_ADMIN')">Delete</th>
+                <th sec:authorize="hasAnyAuthority('USER','ADMIN')">View</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
             </tr>
             <tr th:each="expense : ${expenses}">
                 <td th:text="${expense.date}">Date</td>
                 <td th:text="${expense.cost}">Amount</td>
                 <td th:text="${expense.description}"> </td>
                 <td th:text="${expense.type}">Type</td>
-                <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/expense/' + expense.id}">View</a></td>
-                <td sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
-                <td sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="${'/expense/delete/' + expense.id}">Delete</a></td>
+                <td sec:authorize="hasAnyAuthority('USER','ADMIN')"><a th:href="${'/expense/' + expense.id}">View</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="${'/expense/delete/' + expense.id}">Delete</a></td>
             </tr>
             <tr>
                 <td>Total amount:</td>
