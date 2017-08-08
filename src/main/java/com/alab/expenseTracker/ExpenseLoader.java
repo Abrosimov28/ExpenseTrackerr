@@ -54,14 +54,14 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         expense1.setDescription("Rema 1000");
         expense1.setDate("01.07.17");
         expense1.setType("Food");
-        expense1.setPaidBy("user");
+        expense1.setPaidBy("alexander");
         expenseRepository.save(expense1);
 
         Expense expense2 = new Expense();
         expense2.setCost(2000);
         expense2.setDescription("H&M");
         expense2.setDate("01.08.17");
-        expense2.setType("Clothes");
+        expense2.setType("Div");
         expense2.setPaidBy("admin");
         expenseRepository.save(expense2);
 

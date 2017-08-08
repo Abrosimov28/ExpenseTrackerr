@@ -35,10 +35,16 @@ public class ExpenseService {
     public Expense findById(int id) {
         return expenseDao.findOne(id);
     }
+
     public List<Expense> findAllExpenses() {
         return sort(expenseDao.findAll());
     }
-    public void deleteExpense(int id) {expenseDao.delete(id);};
+
+    public void deleteExpense(int id) {
+        expenseDao.delete(id);
+    }
+
+    ;
 
     public void saveExpense(Expense expense) throws ParseException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -96,6 +102,7 @@ public class ExpenseService {
         });
         return list;
     }
+
     private List<Expense> filterByType(String type) {
         if (type.equals(ALL)) {
             return expenseDao.findAll();
@@ -110,12 +117,39 @@ public class ExpenseService {
     }
 
 
-
     public int getTotalCost(List<Expense> allExpensesByChosenDate) {
         int totalCost = 0;
         for (Expense expense : allExpensesByChosenDate) {
             totalCost += expense.getCost();
         }
         return totalCost;
+    }
+
+      // Method which will return a sum of what each user has paid
+    public Map<String, Integer> yearlyPerUsers() throws ParseException {
+        Map<String, Integer> map = new HashMap<>();
+
+        for (Expense exp: expensesThisYear()) {
+            if (!map.containsKey(exp.getPaidBy())) {
+                Integer sum = exp.getCost();
+                map.put(exp.getPaidBy(), sum);
+            } else {
+                map.put(exp.getPaidBy(),  map.get(exp.getPaidBy()) + exp.getCost());
+            }
+        }
+        return map;
+    }
+
+    public List<Expense> expensesThisYear() throws ParseException {
+        List<Expense> expenses = new LinkedList<Expense>();
+        Date today = new Date();
+        int thisYear = today.getYear();
+
+        for (Expense exp : findAllExpenses()) {
+            if (sdfOutput.parse(exp.getDate()).getYear() == thisYear) {
+                expenses.add(exp);
+            }
+        }
+        return expenses;
     }
 }

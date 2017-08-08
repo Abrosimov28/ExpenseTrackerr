@@ -19,7 +19,8 @@ public class ExpenseController {
         private ExpenseService expenseService;
 
         @RequestMapping("/")
-        String index() {
+        String index(Model model) throws ParseException {
+            model.addAttribute("yearlyPerUsers", expenseService.yearlyPerUsers());
             return "index";
         }
 

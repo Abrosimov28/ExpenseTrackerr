@@ -10,6 +10,25 @@
 
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <h2>Total this year:</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Paid by</th>
+            <th>Amount</th>
+            <th>Food</th>
+            <th>Holiday</th>
+            <th>House</th>
+            <th>Diverse</th>
+        </tr>
+        <tr th:each="yearlyPerUser : ${yearlyPerUsers}">
+            <td th:text="${yearlyPerUser.key}">Paid by</td>
+            <td th:text="${yearlyPerUser.value}">Amount</td>
+            <!--<td th:text="${yearlyPerUser.food}">Food</td>-->
+            <!--<td th:text="${yearlyPerUser.holiday}">Holiday</td>-->
+            <!--<td th:text="${yearlyPerUser.house}">House</td>-->
+            <!--<td th:text="${yearlyPerUser.diverse}">Diverse</td>-->
+        </tr>
+    </table>
 </div>
 </body>
 </html>
