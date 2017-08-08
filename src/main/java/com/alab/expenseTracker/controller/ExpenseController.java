@@ -27,6 +27,7 @@ public class ExpenseController {
         public String getAllExpenses(Model model) {
             model.addAttribute("expenses", expenseService.findAllExpenses());
             model.addAttribute("totalCost", expenseService.getTotalCost(expenseService.findAllExpenses()));
+            model.addAttribute("users", expenseService.getAllUsers());
             return "expenses";
         }
 
@@ -42,10 +43,12 @@ public class ExpenseController {
         public String getAllExpensesByChosenDate(@RequestParam("dateFrom") String dateFrom,
                                                  @RequestParam("dateTo") String dateTo,
                                                  @RequestParam("type") String type,
+                                                 @RequestParam("paidBy") String paidBy,
                                                  Model model) throws ParseException {
-            model.addAttribute("expenses", expenseService.getAllExpensesByChosenDate(dateFrom, dateTo, type));
+            model.addAttribute("expenses", expenseService.getAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy));
             model.addAttribute("totalCost", expenseService.getTotalCost(expenseService.
-                    getAllExpensesByChosenDate(dateFrom, dateTo, type)));
+                    getAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy)));
+            model.addAttribute("users", expenseService.getAllUsers());
             return "expenses";
         }
 

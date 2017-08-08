@@ -54,6 +54,7 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         expense1.setDescription("Rema 1000");
         expense1.setDate("01.07.17");
         expense1.setType("Food");
+        expense1.setPaidBy("user");
         expenseRepository.save(expense1);
 
         Expense expense2 = new Expense();
@@ -61,6 +62,7 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         expense2.setDescription("H&M");
         expense2.setDate("01.08.17");
         expense2.setType("Clothes");
+        expense2.setPaidBy("admin");
         expenseRepository.save(expense2);
 
         Expense expense3 = new Expense();
@@ -68,6 +70,7 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         expense3.setDescription("Rent");
         expense3.setDate("01.09.17");
         expense3.setType("House");
+        expense3.setPaidBy("admin");
         expenseRepository.save(expense3);
 
         Expense expense4 = new Expense();
@@ -75,13 +78,14 @@ public class ExpenseLoader implements ApplicationListener<ContextRefreshedEvent>
         expense4.setDescription("Stavanger");
         expense4.setDate("01.09.17");
         expense4.setType("Holiday");
+        expense4.setPaidBy("admin");
         expenseRepository.save(expense4);
     }
 
     private void loadUsers() {
         User user1 = new User();
-        user1.setUsername("user");
-        user1.setPassword("user");
+        user1.setUsername("alexander");
+        user1.setPassword("alexander");
         user1.setDateCreated(new Date());
         userService.saveOrUpdate(user1);
 

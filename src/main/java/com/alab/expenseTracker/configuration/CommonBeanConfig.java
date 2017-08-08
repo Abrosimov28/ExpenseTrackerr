@@ -18,7 +18,7 @@ public class CommonBeanConfig {
     public SpringSecurityDialect springSecurityDialect(){
         return new SpringSecurityDialect();
     }
-//
+
 //    @Bean
 //    public PasswordEncoder passwordEncoder(StrongPasswordEncryptor passwordEncryptor){
 //        PasswordEncoder passwordEncoder = new PasswordEncoder();

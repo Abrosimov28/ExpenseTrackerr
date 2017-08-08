@@ -12,6 +12,7 @@
     <div>
         <form class="form-horizontal" th:object="${expense}" th:action="@{/expense}" method="post">
             <input th:type="hidden" th:field="*{id}"/>
+            <!--<input th:type="hidden" th:field="*{paidBy}" th:value="@{${#authentication.name}}"/>-->
             <div class="form-group">
                 <label class="col-sm-2 control-label">Cost:</label>
                 <div class="col-sm-10">

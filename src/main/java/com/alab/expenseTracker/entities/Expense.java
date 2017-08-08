@@ -18,20 +18,12 @@ public class Expense implements Serializable {
     private String date;
     private String description;
     private String type; //Food, Hobbies, Household ...
+    private String paidBy;
 
 
-    public Expense(){
+    public Expense() {
 
     };
-
-//    public Expense(int id, int amountSpent, String date,  String description, String type) {
-//        this.id = id;
-//        this.cost = amountSpent;
-//        this.description = description;
-//        this.date = date;
-//        this.type = type;
-//    }
-
     public int getId() {
         return id;
     }
@@ -71,4 +63,14 @@ public class Expense implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setPaidBy(String paidBy) {
+        this.paidBy = paidBy;
+    }
+
+    public String getPaidBy() {
+
+        return paidBy;
+    }
+
 }
