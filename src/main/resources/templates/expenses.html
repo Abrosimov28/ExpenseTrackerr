@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Expenses</title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
@@ -69,18 +69,18 @@
                 <th>Amount</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
+                <th sec:authorize="hasAnyRole('ROLE_ADMIN')">Edit</th>
+                <th sec:authorize="hasAnyRole('ROLE_ADMIN')">Delete</th>
             </tr>
             <tr th:each="expense : ${expenses}">
                 <td th:text="${expense.date}">Date</td>
                 <td th:text="${expense.cost}">Amount</td>
                 <td th:text="${expense.description}"> </td>
                 <td th:text="${expense.type}">Type</td>
-                <td><a th:href="${ '/expense/' + expense.id}">View</a></td>
-                <td><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
-                <td><a th:href="${'/expense/delete/' + expense.id}">Delete</a></td>
+                <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/expense/' + expense.id}">View</a></td>
+                <td sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="${'/expense/edit/' + expense.id}">Edit</a></td>
+                <td sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="${'/expense/delete/' + expense.id}">Delete</a></td>
             </tr>
             <tr>
                 <td>Total amount:</td>

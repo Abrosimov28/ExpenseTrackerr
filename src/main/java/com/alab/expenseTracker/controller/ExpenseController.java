@@ -73,9 +73,15 @@ public class ExpenseController {
             expenseService.saveExpense(expense);
             return "redirect:/expenses";
         }
+
         @RequestMapping(value = "expense/delete/{id}")
         public String deleteExpense(@PathVariable Integer id) {
             expenseService.deleteExpense(id);
             return "redirect:/expenses";
+        }
+
+        @RequestMapping(value = "/login", method = RequestMethod.GET)
+        public String login(){
+            return "login";
         }
 }
