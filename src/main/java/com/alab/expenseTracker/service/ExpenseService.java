@@ -28,7 +28,6 @@ public class ExpenseService {
     private UserRepository users;
 
     public Iterable<User> getAllUsers() {
-        System.out.println(users.findAll());
         return users.findAll();
 
     }

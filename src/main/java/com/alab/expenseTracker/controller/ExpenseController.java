@@ -31,13 +31,6 @@ public class ExpenseController {
             return "expenses";
         }
 
-//        @RequestMapping(value = "expensesByCurrentMonth", method = RequestMethod.GET)
-//        public String getAllExpensesByCurrentMonth(@RequestParam("type") String type,
-//                                                   Model model) throws ParseException {
-//            model.addAttribute("expenses", expenseService.getAllExpensesByCurrentMonth(type));
-//            model.addAttribute("totalCost", expenseService.getTotalCost(expenseService.getAllExpensesByCurrentMonth(type)));
-//            return "expenses";
-//        }
 
         @RequestMapping(value = "expensesByChosenDate", method = RequestMethod.GET)
         public String getAllExpensesByChosenDate(@RequestParam("dateFrom") String dateFrom,
