@@ -125,7 +125,7 @@ public class ExpenseService {
         return totalCost;
     }
 
-      // Method which will return a sum of what each user has paid
+      // Method which will return a sum of what each user has paid totally
     public Map<String, Integer> yearlyPerUsers() throws ParseException {
         Map<String, Integer> map = new HashMap<>();
 
@@ -152,4 +152,23 @@ public class ExpenseService {
         }
         return expenses;
     }
+    // method which will return what has each user paid in each category
+//    public Map<String, Map<String, Integer>> yearlyCategoriesPerUser() throws ParseException {
+//        Map<String, Map<String, Integer>> map = new HashMap<>();
+//
+//        for (Expense exp: expensesThisYear()) {
+//            if (!map.containsKey(exp.getPaidBy())) {
+//                map.put(exp.getPaidBy(), new HashMap<String, Integer>());
+//            } else {
+//                if (!map.get(exp.getPaidBy()).containsKey(exp.getType())) {
+//                    int sum = exp.getCost();
+//                    map.get(exp.getPaidBy()).put(exp.getType(), sum);
+//                } else {
+//                    map.get(exp.getPaidBy()).put(exp.getType(), exp.getCost() + map.get(exp.getPaidBy()).get(exp.getType()));
+//                }
+//            }
+//        }
+//        return map;
+//    }
+
 }

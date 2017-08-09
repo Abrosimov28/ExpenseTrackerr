@@ -21,6 +21,7 @@ public class ExpenseController {
         @RequestMapping("/")
         String index(Model model) throws ParseException {
             model.addAttribute("yearlyPerUsers", expenseService.yearlyPerUsers());
+//            model.addAttribute("categoriesCurrentYearPerUser", expenseService.yearlyCategoriesPerUser());
             return "index";
         }
 
