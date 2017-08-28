@@ -5,7 +5,6 @@ import com.alab.expenseTracker.service.ExpenseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +34,7 @@ public class ExpenseController {
         public String getAllExpenses(Model model) {
             model.addAttribute("expenses", expenseService.findAllExpenses());
             model.addAttribute("totalCost", expenseService.getTotalCost(expenseService.findAllExpenses()));
-            model.addAttribute("users", expenseService.getAllUsers());
+            model.addAttribute("users", expenseService.findAllUsers());
             return "expenses";
         }
 
@@ -47,10 +46,10 @@ public class ExpenseController {
                                                  @RequestParam("type") String type,
                                                  @RequestParam("paidBy") String paidBy,
                                                  Model model) throws ParseException {
-            model.addAttribute("expenses", expenseService.getAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy));
+            model.addAttribute("expenses", expenseService.findAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy));
             model.addAttribute("totalCost", expenseService.getTotalCost(expenseService.
-                    getAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy)));
-            model.addAttribute("users", expenseService.getAllUsers());
+                    findAllExpensesByChosenDate(dateFrom, dateTo, type, paidBy)));
+            model.addAttribute("users", expenseService.findAllUsers());
             return "expenses";
         }
 

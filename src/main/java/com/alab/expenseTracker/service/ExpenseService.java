@@ -14,20 +14,20 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
-
 public class ExpenseService {
 
     private final String ALL = "all";
 
     @Autowired
     private ExpenseRepository expenseDao;
+
     SimpleDateFormat sdfOutput = new SimpleDateFormat("dd.MM.yy", Locale.ENGLISH);
     SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     @Autowired
     private UserRepository users;
 
-    public Iterable<User> getAllUsers() {
+    public Iterable<User> findAllUsers() {
         return users.findAll();
 
     }
@@ -56,10 +56,10 @@ public class ExpenseService {
         expenseDao.save(expense);
     }
 
-    public List<Expense> getAllExpensesByChosenDate(String dateFrom,
-                                                    String dateTo,
-                                                    String type,
-                                                    String paidBy) throws ParseException {
+    public List<Expense> findAllExpensesByChosenDate(String dateFrom,
+                                                     String dateTo,
+                                                     String type,
+                                                     String paidBy) throws ParseException {
         List<Expense> listByChosenDate = new LinkedList<Expense>();
         Date dateF = sdfInput.parse(dateFrom);
         Date dateT = sdfInput.parse(dateTo);
