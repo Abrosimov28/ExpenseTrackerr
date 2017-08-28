@@ -18,9 +18,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 // configure anotacia hovori ze toto je config class
 @Configuration
 public class SpringSecConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
     private AuthenticationProvider authenticationProvider;
 
-    @Autowired
+
     @Qualifier("daoAuthenticationProvider")
     public void setAuthenticationProvider(AuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
@@ -43,7 +44,6 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 
-    @Autowired
     public void configureAuthManager(AuthenticationManagerBuilder authenticationManagerBuilder){
         authenticationManagerBuilder.authenticationProvider(authenticationProvider);
     }

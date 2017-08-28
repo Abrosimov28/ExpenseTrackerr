@@ -11,17 +11,17 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
+
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    @Autowired
     private EncryptionService encryptionService;
 
-    @Autowired
+
     public void setEncryptionService(EncryptionService encryptionService) {
         this.encryptionService = encryptionService;
     }
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<?> listAll() {
         List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add); //fun with Java 8
+        userRepository.findAll().forEach(users::add);
         return users;
     }
 

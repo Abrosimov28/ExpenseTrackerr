@@ -11,16 +11,17 @@ import org.springframework.stereotype.Service;
 
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
-
+    @Autowired
     private UserService userService;
+    @Autowired
     private Converter<User, UserDetails> userUserDetailsConverter;
 
-    @Autowired
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
-    @Autowired
+
     @Qualifier(value = "userToUserDetails")
     public void setUserUserDetailsConverter(Converter<User, UserDetails> userUserDetailsConverter) {
         this.userUserDetailsConverter = userUserDetailsConverter;
