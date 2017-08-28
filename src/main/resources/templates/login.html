@@ -15,22 +15,30 @@
             You have been logged out.
         </label>
     </div>
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <form th:action="@{/login}" class="form-login" method="post">
 
-    <form th:action="@{/login}" method="post">
+                <!--<table class="table table-striped">-->
+                <h4>Welcome</h4>
+                <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" name="username"/>
+                <br/>
+                <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" name="password"/>
+                <br/>
+                <div class="wrapper">
+                     <span class="group-btn">
+                          <button type="submit" class="btn btn-primary btn-md">Sign in <i
+                                  class="fa fa-sign-in"></i></button>
+                     </span>
+                </div>
 
-        <table class="table table-striped">
-            <tr>
-                <td><label class="loginName"> User Name : <input type="text" name="username"/> </label></td>
-            </tr>
-            <tr>
-                <td><label> Password : <input type="password" name="password"/> </label></td>
-            </tr>
-            <tr>
-                <td> <button type="submit" class="btn btn-default">Sign In</button></td>
-            </tr>
-        </table>
+                <!--</table>-->
 
-    </form>
+            </form>
+
+
+        </div>
+    </div>
 </div>
 </body>
 </html>

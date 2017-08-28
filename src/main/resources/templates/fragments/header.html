@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
-<div class="container">
+<div class="container"  >
     <div th:fragment="header">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" sec:authorize="hasAuthority('ADMIN')">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+                <a class="navbar-brand" href="#" th:href="@{/}" sec:authorize="hasAuthority('ADMIN')">Home</a>
                 <ul class="nav navbar-nav">
                     <li><a href="#" th:href="@{/expenses}" sec:authorize="hasAuthority('ADMIN')">Expenses</a></li>
                     <li><a href="#" th:href="@{/expense/new}" sec:authorize="hasAuthority('ADMIN')">New Expense</a></li>
